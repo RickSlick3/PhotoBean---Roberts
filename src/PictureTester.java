@@ -23,7 +23,7 @@ public class PictureTester {
      * Method to test keepOnlyblue
      */
     public static void testKeepOnlyBlue() {
-        Picture beach = new Picture("beach.jpg");
+        Picture beach = new Picture("moon-surface.jpg");
         //beach.explore(); // show before
         beach.keepOnlyBlue();
         beach.explore(); // show after

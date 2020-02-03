@@ -376,11 +376,11 @@ public class Picture extends SimplePicture
     this.copy(flower1,400,0);
     this.copy(flower2,500,0);
     this.mirrorVertical();
-    this.write("collage.jpg");
+    //this.write("collage.jpg");
   }
   
   //New copy method with more parameters
-   public void copyTwo(Picture fromPic, int startRow, int startCol, 
+   public void copyTwo(Picture fromPic, int toStartRow, int toStartCol, 
                         int fromStartRow, int fromEndRow, 
                         int fromStartCol, int fromEndCol)
   {
@@ -388,14 +388,15 @@ public class Picture extends SimplePicture
     Pixel toPixel = null;
     Pixel[][] toPixels = this.getPixels2D();
     Pixel[][] fromPixels = fromPic.getPixels2D();
-    for (int fromRow = fromStartRow, toRow = startRow; 
+    //FIX LOOP CONDITIONS
+    for (int fromRow = fromStartRow, toRow = toStartRow; 
          fromRow < fromEndRow &&
-         toRow < (startRow + (fromEndRow - fromStartRow)); 
+         toRow < (toStartRow + (fromEndRow - fromStartRow)); 
          fromRow++, toRow++)
     {
-      for (int fromCol = fromStartCol, toCol = startCol; 
+      for (int fromCol = fromStartCol, toCol = toStartCol; 
            fromCol < fromEndCol &&
-           toCol < (startCol + (fromEndCol - fromStartCol));  
+           toCol < (toStartCol + (fromEndCol - fromStartCol));  
            fromCol++, toCol++)
       {
         fromPixel = fromPixels[fromRow][fromCol];
@@ -408,20 +409,20 @@ public class Picture extends SimplePicture
    //New collage that incorporates copyTwo
    public void myCollage()
   {
-    Picture ___ = new Picture(".jpg");
-    Picture ___ = new Picture(".jpg");
-    Picture ___ = new Picture(".jpg");
+    Picture blueMark = new Picture("blue-mark.jpg");
+    Picture flower2 = new Picture("flower2.jpg");
+    Picture moonSurface = new Picture("moon-surface.jpg");
     
-    this.copyTwo(___,,,,,,);
-    this.copyTwo(___,,,,,,);
-    this.copyTwo(___,,,,,,);
-    Picture flowerNoBlue = new Picture(flower2);
-    flowerNoBlue.zeroBlue();
-    this.copy(flowerNoBlue,300,0);
-    this.copy(flower1,400,0);
-    this.copy(flower2,500,0);
-    this.mirrorVertical();
-    this.write("myCollage.jpg");
+    this.copyTwo(moonSurface, 0, 0, 0, 0, 479, 639);
+    this.copyTwo(blueMark, 85, 35, 160, 300, 280, 280);
+    this.copyTwo(blueMark, 327, 160, 160, 300, 280, 280);
+    
+    Picture flower2Negate = new Picture(flower2);
+    flower2Negate.negate();
+    this.copyTwo(flower2Negate, 120, 325, 22, 20, 95, 81);
+    this.mirrorDiagonal();
+    
+    //this.write("myCollage.jpg");
   }
   
   /** Method to show large changes in color 
