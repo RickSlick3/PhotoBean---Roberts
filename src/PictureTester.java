@@ -150,9 +150,9 @@ public class PictureTester {
     }
     
     public static void testCollage2() {
-        Picture canvas = new Picture("640x480.jpg");
-        canvas.myCollage();
-        canvas.explore();
+        Picture canvasTwo = new Picture("640x480.jpg");
+        canvasTwo.myCollage();
+        canvasTwo.explore();
     }
 
     /**
@@ -188,6 +188,6 @@ public class PictureTester {
         testCollage();
         testCollage2();
         //A9
-        // testEdgeDetection2();
+        testEdgeDetection();
     }
 }

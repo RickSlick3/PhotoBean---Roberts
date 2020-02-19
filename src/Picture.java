@@ -384,19 +384,20 @@ public class Picture extends SimplePicture
                         int fromStartRow, int fromEndRow, 
                         int fromStartCol, int fromEndCol)
   {
+    int toEndRow = toStartRow + (fromEndRow - fromStartRow);
+    int toEndCol = toStartCol + (fromEndCol - toStartCol);
+      
     Pixel fromPixel = null;
     Pixel toPixel = null;
     Pixel[][] toPixels = this.getPixels2D();
     Pixel[][] fromPixels = fromPic.getPixels2D();
     //FIX LOOP CONDITIONS
     for (int fromRow = fromStartRow, toRow = toStartRow; 
-         fromRow < fromEndRow &&
-         toRow < (toStartRow + (fromEndRow - fromStartRow)); 
+         fromRow < fromEndRow && toRow < toEndRow; 
          fromRow++, toRow++)
     {
       for (int fromCol = fromStartCol, toCol = toStartCol; 
-           fromCol < fromEndCol &&
-           toCol < (toStartCol + (fromEndCol - fromStartCol));  
+           fromCol < fromEndCol && toCol < toEndCol;  
            fromCol++, toCol++)
       {
         fromPixel = fromPixels[fromRow][fromCol];
