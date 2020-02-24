@@ -143,12 +143,15 @@ public class PictureTester {
     /**
      * Method to test the collage method
      */
+    
+    // NOT FINISHED
     public static void testCollage() {
         Picture canvas = new Picture("640x480.jpg");
         canvas.createCollage();
         canvas.explore();
     }
     
+    // NOT FINISHED
     public static void testCollage2() {
         Picture canvasTwo = new Picture("640x480.jpg");
         canvasTwo.myCollage();
@@ -185,8 +188,8 @@ public class PictureTester {
         //testMirrorArms();
         //testMirrorGull();
         //A8
-        testCollage();
-        testCollage2();
+        //testCollage();
+        //testCollage2();
         //A9
         testEdgeDetection();
     }
